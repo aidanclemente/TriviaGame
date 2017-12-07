@@ -1,0 +1,62 @@
+@font-face {
+font-family: "Simpsonfont";
+src: url("fonts/simpsons/Simpsonfont.ttf") format("truetype");
+
+}
+
+body {
+	font-family: "Simpsonfont";
+	background-image: url(../images/background2.jpg);
+
+}
+
+h1 {
+	font-size: 5.5rem;
+	color: gold;
+}
+ h1, #time, #question, #answers {
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+ }
+
+ #startButton {
+ 	left: 480px;
+    position: relative;
+    bottom: 285px;
+    padding: 15px;
+    background-color: gold;
+    border: 1px solid black;
+ }
+
+ #startButton:hover {
+	background-color: #ead520;
+}
+
+#time, #question, #answers {
+	line-height: 55px;
+    font-size: 35px;
+   	color: gold;
+   	display: none;
+   	width: 20%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#time {
+	margin-top: 38px;
+}
+
+#time:hover, #question:hover, #answers:hover {
+	color: #ead520;
+}
+
+
+/*:hover {*/
+/*	border: 1px solid black;
+}*/
+
+#mainContent {
+	/*background: #fff;*/
+	position: relative;
+    top: 70px;
+    height: 583px;
+}
