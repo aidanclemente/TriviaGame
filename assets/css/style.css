@@ -18,6 +18,11 @@ h1 {
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
  }
 
+ button {
+ 	background: none;
+ 	border: none;
+ }
+
  #startButton {
  	left: 480px;
     position: relative;
@@ -36,7 +41,6 @@ h1 {
     font-size: 35px;
    	color: gold;
    	display: none;
-   	width: 20%;
     margin-right: auto;
     margin-left: auto;
 }
@@ -45,8 +49,23 @@ h1 {
 	margin-top: 38px;
 }
 
-#time:hover, #question:hover, #answers:hover {
-	color: #ead520;
+#choices {
+	margin-top: 20px;
+}
+
+#choice1, #choice2, #choice3, #choice4 {
+ 	display: none;
+	color: black;
+	font-size: 20px;
+	width: 200px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 5px;
+}
+
+#choice1:hover, #choice2:hover, #choice3:hover, #choice4:hover {
+	border: 1px solid black;
+	font-size: 25px;
 }
 
 
