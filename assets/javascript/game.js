@@ -17,7 +17,8 @@ var quiz = {
 		 		c: "Ralph",
 		 		d: "Gerald"
 		 	},
-		 	answer: "c",
+		 	value: "c",
+		 	correctAnswer: "Ralph",
 		 	gif: "assets/gifs/ralph.gif",
 		 	correctSound: "assets/music/correct/chooseMe.mp3",
 		 	wrongSound: "assets/music/wrong/failEnglish.mp3",
@@ -31,53 +32,57 @@ var quiz = {
 		 		c: "Trumpet",
 		 		d: "Saxo-mo-phone"
 		 	},		 	
-		 	answer: "d",
+		 	value: "d",
+		 	correctAnswer: "Saxo-mo-phone",
 		 	gif: "assets/gifs/lisa.gif",
 		 	correctSound: "assets/music/correct/bartBigDeal.wav",
 		 	wrongSound: "assets/music/wrong/doh2.mp3",
 		 },
 
-		 // homer: {
-		 // 	question:
-		 // 	choices: {
-			 	// 	a: "Bart",
-			 	// 	b: "Milhouse",
-			 	// 	c: "Ralph",
-			 	// 	d: "Gerald"
-			 	// },
-		 // 	answer:
-		 // 	gif:
-		 // 	correctSound:
-		 // 	wrongSound:
-		 // },
+		 homer: {
+		 	question: "What's Homer's favorite beverage?",
+		 	choices: {
+			 		a: "An All-syrup Squishee",
+			 		b: "Duff Beer",
+			 		c: "Illegal Bathtub Hooch",
+			 		d: "Flaming Moe",
+			 	},
+		 	value: "b",
+		    correctAnswer: "Duff Beer",
+		 	gif: "assets/gifs/homer.gif",
+		 	correctSound: "assets/music/correct/homerBeer.wav",
+		 	wrongSound: "assets/music/wrong/burp.wav",
+		 },
 
-		 // bart: {
-		 // 	question:
-		 // 	choices: {
-			 	// 	a: "Bart",
-			 	// 	b: "Milhouse",
-			 	// 	c: "Ralph",
-			 	// 	d: "Gerald"
-			 	// },		 
-		 // 	answer:
-		 // 	gif:
-		 // 	correctSound:
-		 // 	wrongSound:
-		 // },
+		 bart: {
+		 	question: "Which one of these is not a catchphrase Bart uses?",
+		 	choices: {
+			 		a: "Don't have a cow, man!",
+			 		b: "Eat my shorts",
+			 		c: "Woohoo",
+			 		d: "Aye Carumba!"
+			 	},		 
+		 	value: "c",
+		 		correctAnswer: "Woohoo",
+		 	gif: "assets/gifs/bart.gif",
+		 	correctSound: "assets/music/correct/bartCowabunga.wav",
+		 	wrongSound: "assets/music/wrong/bartWrong.wav",
+		 },
 
-		 // skinner: {
-		 // 	question:
-		 // 	choices: {
-			 	// 	a: "Bart",
-			 	// 	b: "Milhouse",
-			 	// 	c: "Ralph",
-			 	// 	d: "Gerald"
-			 	// },
-		 // 	answer:
-		 // 	gif:
-		 // 	correctSound:
-		 // 	wrongSound:
-		 // },
+		 skinner: {
+		 	question: " What is Seymour Skinner's occupation?",
+		 	choices: {
+			 		a: "Elementary School Principal",
+			 		b: "Bus Driver",
+			 		c: "Teacher",
+			 		d: "Bartender"
+			 	},
+		 	value: "a",
+		 		correctAnswer: "Elementary School Principal",
+		 	gif: "assets/gifs/skinner.gif",
+		 	correctSound: "assets/music/correct/bartYea.wav",
+		 	wrongSound: "assets/music/wrong/bartBuckleDown.wav",
+		 },
 
 		 // marge: {
 		 // 	question:
@@ -87,8 +92,9 @@ var quiz = {
 			 	// 	c: "Ralph",
 			 	// 	d: "Gerald"
 			 	// },
-		 // 	answer:
-		 // 	gif:
+		 // 	value: "b",
+		 //		correctAnswer: "Duff beer",
+		 // 	gif: "assets/gifs/skinner.gif",
 		 // 	correctSound:
 		 // 	wrongSound:
 		 // },
@@ -101,7 +107,8 @@ var quiz = {
 			 	// 	c: "Ralph",
 			 	// 	d: "Gerald"
 			 	// },
-		 // 	answer:
+		 // 	value: "b",
+		 //		correctAnswer: "Duff beer",
 		 // 	gif:
 		 // 	correctSound:
 		 // 	wrongSound:
@@ -115,7 +122,8 @@ var quiz = {
 			 	// 	c: "Ralph",
 			 	// 	d: "Gerald"
 			 	// },
-		 // 	answer:
+		 // 	value: "b",
+		 //		correctAnswer: "Duff beer",
 		 // 	gif:
 		 // 	correctSound:
 		 // 	wrongSound:
@@ -129,7 +137,8 @@ var quiz = {
 			 	// 	c: "Ralph",
 			 	// 	d: "Gerald"
 			 	// },
-		 // 	answer:
+		 // 	value: "b",
+		 //		correctAnswer: "Duff beer",
 		 // 	gif:
 		 // 	correctSound:
 		 // 	wrongSound:
@@ -143,82 +152,111 @@ var quiz = {
 			 	// 	c: "Ralph",
 			 	// 	d: "Gerald"
 			 	// },
-		 // 	answer:
+		 // 	value: "b",
+		 //		correctAnswer: "Duff beer",
 		 // 	gif:
 		 // 	correctSound:
 		 // 	wrongSound:
 		 //},
 	},
 
+	intervalId: "",
+	timerRunning: false,
 	correctAnswers: 0,
 	wrongAnswers: 0,
+	unanswered: 0,
 	seconds: 30,
-
-	startTimer: function() {
-	$("#time").html("Time Remaining: " + quiz.seconds + " Seconds");
-quiz.timer();
-	},
+	index: 0,
 
 	start:  function() {
-	$("#startButton").attr("style", "display: none");
-	$("#time, #question, #choices, #choice1, #choice2, #choice3, #choice4").attr("style", "display: block");
-	quiz.startTimer();
-			$("#question").html(quiz.trivia.ralph.question);
-			$("#question").css("color", "black");
-			$("#choice1").html("a. " + quiz.trivia.ralph.choices.a);
-			$("#choice2").html("b. " + quiz.trivia.ralph.choices.b);
-			$("#choice3").html("c. " + quiz.trivia.ralph.choices.c);
-			$("#choice4").html("d. " + quiz.trivia.ralph.choices.d);
-		
+		$("#audio").attr("src", "assets/music/bartHell.wav");
+		$("#startButton").attr("style", "display: none");
+		$("#time, #question, #choices, .choices").attr("style", "display: block");
+		quiz.questions();
 	},
 
+	questions: function() {
+		quiz.seconds = 30;
+		var y = quiz.names[quiz.index];
+		quiz.timer();
+		$("#question").html(quiz.trivia[y].question);
+		$("#gif").attr("style", "display: none");
+		$("#time").attr("style", "display: block");
+		$("#choices, .choice").attr("style", "display: block");
+		$("#choice1").html("a. " + quiz.trivia[y].choices.a);
+		$("#choice2").html("b. " + quiz.trivia[y].choices.b);
+		$("#choice3").html("c. " + quiz.trivia[y].choices.c);
+		$("#choice4").html("d. " + quiz.trivia[y].choices.d);
+	},
 
-		// for (var i = 0; i < quiz.names.length; i++) { 
-		// 	var y = quiz.names[i];
-		// 	$("#question").html(quiz.trivia[y].question);
-		// 	$("#question").css("color", "black");
-		// 	$("#choice1").html("a. " + quiz.trivia[y].choices.a);
-		// 	$("#choice2").html("b. " + quiz.trivia[y].choices.b);
-		// 	$("#choice3").html("c. " + quiz.trivia[y].choices.c);
-		// 	$("#choice4").html("d. " + quiz.trivia[y].choices.d);
-		// }
 
 	timer: function() {
-		var s = quiz.seconds--;
+		timerRunning = true;
+		var s = quiz.seconds;
+		quiz.seconds--;
 
 		$("#time").html("Time Remaining: " + s + " Seconds");
-		setTimeout(quiz.timer, 1000);
+		intervalId = setTimeout(quiz.timer, 1000);
+
+		if (s == 0) {
+			quiz.stopTimer();
+			quiz.answerCheck();
+			unanswered++;
+		}
 	},
 
-	
-// This is not working correctly!!!!!!!!!!!!!!!!!!!!!!!!!!
+	stopTimer: function() {
+		timerRunning = false;
+		clearInterval(intervalId);
+		$("#time").attr("style", "display: none");
+	},
+
+// stopTimer is not working correctly!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 	answerCheck: function() {
+		//which answer they choose
 		var selected = this.value;
+		quiz.stopTimer();
 
-		for (var i = 0; i < quiz.names.length; i++) {
-
-			var x = quiz.names[i];
+			var x = quiz.names[quiz.index];
 		
-			if (selected == quiz.trivia[x].answer) {
+			if (selected == quiz.trivia[x].value) {
 				quiz.correctAnswers++;
 				$("#question").html("Correct!")
 				$("#audio").attr("src", quiz.trivia[x].correctSound);
-				$("#choices").html("<img src="+ quiz.trivia[x].gif +">");
+				$("#gif").attr("style", "display: block");
+				$("#gif").html("<img src="+ quiz.trivia[x].gif +">");
+				$("#choices").attr("style", "display: none");
+				quiz.index++;
+				quiz.endGame();
+				setTimeout(quiz.questions, 1000 * 5);
 			} else {
 				quiz.wrongAnswers++;
-				$("#question").html("Wrong! The correct answer was Ralph");
+				$("#question").html("Wrong! The correct answer was &nbsp" + quiz.trivia[x].correctAnswer);
 				$("#audio").attr("src", quiz.trivia[x].wrongSound);
-				$("#choices").html("<img src="+ quiz.trivia[x].gif +">");
+				$("#gif").attr("style", "display: block");
+				$("#gif").html("<img src="+ quiz.trivia[x].gif +">");
+				$("#choices").attr("style", "display: none");
+				quiz.index++;
+				quiz.endGame();
+				setTimeout(quiz.questions, 1000 * 5);
 			};
-			console.log(quiz.names[i]);
-		};
+		
+			console.log(quiz.names[quiz.index]);
 	},
 
-	togglePlay: function() {
-	  return audio.paused ? audio.play() : audio.pause();
-	}
+	endGame: function() {
 
-}
+		if (quiz.correctAnswers + quiz.wrongAnswers + quiz.unanswered === quiz.names.length) {
+			$("#gif").attr("style", "display: none");
+			$("#choices").attr("style", "display: block");
+			$("#question").html("All done, here's how you did!")
+			$("#choices").html("Correct Answers: " + quiz.correctAnswers + "<br> Incorrect Answers: " + quiz.wrongAnswers + "<br> Unanswered: " + quiz.unanswered)
+		}
+	},
+
+};
 
 
 //timer counting down, restarts with each question
@@ -240,8 +278,6 @@ quiz.timer();
 
 
 //++++++++++Start Game++++++++++++++++++
-$("#startButton").on("click", quiz.start);
+$("#startButton").click(quiz.start);
 
-$(".choice").on("click", quiz.answerCheck);
-
-$("#startButton").on("click", quiz.togglePlay)
+$(".choice").click(quiz.answerCheck);

@@ -23,6 +23,16 @@ h1 {
  	border: none;
  }
 
+button:focus {
+  outline: none;
+}
+
+img {
+	width: 500px;
+	margin-right: auto;
+    margin-left: auto;
+}
+
  #startButton {
  	left: 480px;
     position: relative;
@@ -32,14 +42,14 @@ h1 {
     border: 1px solid black;
  }
 
- #startButton:hover {
+#startButton:hover {
 	background-color: #ead520;
 }
 
 #time, #question, #answers {
 	line-height: 55px;
     font-size: 35px;
-   	color: gold;
+   	color: black;
    	display: none;
     margin-right: auto;
     margin-left: auto;
@@ -47,31 +57,23 @@ h1 {
 
 #time {
 	margin-top: 38px;
+	color: gold;
 }
 
-#choices {
-	margin-top: 20px;
-}
-
-#choice1, #choice2, #choice3, #choice4 {
+.choice, #choices{
  	display: none;
 	color: black;
 	font-size: 20px;
-	width: 200px;
+	width: 300px;
 	margin-right: auto;
 	margin-left: auto;
 	padding: 5px;
 }
 
-#choice1:hover, #choice2:hover, #choice3:hover, #choice4:hover {
-	border: 1px solid black;
-	font-size: 25px;
+#choices {
+	margin-top: 20px;
+	width: 300px;
 }
-
-
-/*:hover {*/
-/*	border: 1px solid black;
-}*/
 
 #mainContent {
 	/*background: #fff;*/
