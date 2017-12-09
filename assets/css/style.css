@@ -42,7 +42,7 @@ img {
     border: 1px solid black;
  }
 
-#startButton:hover {
+ #startButton:hover {
 	background-color: #ead520;
 }
 
@@ -73,6 +73,11 @@ img {
 #choices {
 	margin-top: 20px;
 	width: 300px;
+}
+
+.choice:hover {
+	border: 1px solid black;
+	font-size: 25px;
 }
 
 #mainContent {

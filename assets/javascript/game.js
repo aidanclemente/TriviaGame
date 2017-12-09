@@ -1,7 +1,7 @@
 //make the game an object
 var quiz = {
 
-	names: ["ralph", "lisa", "homer", "bart", "skinner", "marge", "burns", "lurleen", "flanders", "devilFlanders"],
+	names: ["ralph", "lisa", "homer", "bart", "skinner", "flanders", "marge", "burns", "lurleen", "devilFlanders"],
 
 	trivia: {
 //make each question an object inside of the game with:
@@ -63,7 +63,7 @@ var quiz = {
 			 		d: "Aye Carumba!"
 			 	},		 
 		 	value: "c",
-		 		correctAnswer: "Woohoo",
+		 	correctAnswer: "Woohoo",
 		 	gif: "assets/gifs/bart.gif",
 		 	correctSound: "assets/music/correct/bartCowabunga.wav",
 		 	wrongSound: "assets/music/wrong/bartWrong.wav",
@@ -78,86 +78,86 @@ var quiz = {
 			 		d: "Bartender"
 			 	},
 		 	value: "a",
-		 		correctAnswer: "Elementary School Principal",
+		 	correctAnswer: "Elementary School Principal",
 		 	gif: "assets/gifs/skinner.gif",
 		 	correctSound: "assets/music/correct/bartYea.wav",
 		 	wrongSound: "assets/music/wrong/bartBuckleDown.wav",
 		 },
 
-		 // marge: {
-		 // 	question:
-		 // 	choices: {
-			 	// 	a: "Bart",
-			 	// 	b: "Milhouse",
-			 	// 	c: "Ralph",
-			 	// 	d: "Gerald"
-			 	// },
-		 // 	value: "b",
-		 //		correctAnswer: "Duff beer",
-		 // 	gif: "assets/gifs/skinner.gif",
-		 // 	correctSound:
-		 // 	wrongSound:
-		 // },
+		 flanders: {
+		 	question: " What's the name of the store that Ned owns in the mall?",
+		 	choices: {
+			 		a: "Helter Shelter",
+			 		b: "Lefties",
+			 		c: "Holy Rollers",
+			 		d: "The Leftorium"
+			 	},
+		 	value: "d",
+		 		correctAnswer: "The Leftorium",
+		 	gif: "assets/gifs/flanders.gif",
+		 	correctSound: "assets/music/correct/nedHotDiggity.wav",
+		 	wrongSound: "assets/music/wrong/bartMustYou.wav",
+		 },
 
-		 // burns: {
-		 // 	question:
-		 // 	choices: {
-			 	// 	a: "Bart",
-			 	// 	b: "Milhouse",
-			 	// 	c: "Ralph",
-			 	// 	d: "Gerald"
-			 	// },
-		 // 	value: "b",
-		 //		correctAnswer: "Duff beer",
-		 // 	gif:
-		 // 	correctSound:
-		 // 	wrongSound:
-		 // },
+		 marge: {
+		 	question: "Which of the following WASN'T Marge against??",
+		 	choices: {
+			 		a: "The Monorail",
+			 		b: "Legalized gambling",
+			 		c: "Itchy and Sratchy",
+			 		d: "Sugar Company"
+			 	},
+		 	value: "b",
+		 	correctAnswer: "Legalized gambling",
+		 	gif: "assets/gifs/marge.gif",
+		 	correctSound: "assets/music/correct/bartEatMyShorts.wav",
+		 	wrongSound: "assets/music/wrong/bartOuttaHere.wav",
+		 },
 
-		 // lurleen:  {
-		 // 	question:
-		 // 	choices: {
-			 	// 	a: "Bart",
-			 	// 	b: "Milhouse",
-			 	// 	c: "Ralph",
-			 	// 	d: "Gerald"
-			 	// },
-		 // 	value: "b",
-		 //		correctAnswer: "Duff beer",
-		 // 	gif:
-		 // 	correctSound:
-		 // 	wrongSound:
-		 // },
+		 burns: {
+		 	question: "Who owns the Nuclear Power Plant?",
+		 	choices: {
+			 		a: "Mr. Burns",
+			 		b: "Moe",
+			 		c: "Barney",
+			 		d: "Waylon Smithers"
+			 	},
+		 	value: "a",
+		 	correctAnswer: "Mr. Burns",
+		 	gif: "assets/gifs/burns.gif",
+		 	correctSound: "assets/music/correct/pishPosh.wav",
+		 	wrongSound: "assets/music/wrong/haHa.wav",
+		 },
 
-		 // flanders: {
-		 // 	question:
-		 // 	choices: {
-			 	// 	a: "Bart",
-			 	// 	b: "Milhouse",
-			 	// 	c: "Ralph",
-			 	// 	d: "Gerald"
-			 	// },
-		 // 	value: "b",
-		 //		correctAnswer: "Duff beer",
-		 // 	gif:
-		 // 	correctSound:
-		 // 	wrongSound:
-		 // },
+		 lurleen:  {
+		 	question: "What country music artist did Colonel Homer manage?",
+		 	choices: {
+			 		a: "Ginger",
+			 		b: "Lurleen",
+			 		c: "Candy",
+			 		d: "Miss Hoover"
+			 	},
+		 	value: "b",
+		 	correctAnswer: "Lurleen",
+		 	gif: "assets/gifs/lurleen.gif",
+		 	correctSound: "assets/music/correct/boring.mp3",
+		 	wrongSound: "assets/music/wrong/bartAyCaramba.wav",
+		 },
 
-		 // devilFlanders: {
-		 // 	question:
-		 // 	choices: {
-			 	// 	a: "Bart",
-			 	// 	b: "Milhouse",
-			 	// 	c: "Ralph",
-			 	// 	d: "Gerald"
-			 	// },
-		 // 	value: "b",
-		 //		correctAnswer: "Duff beer",
-		 // 	gif:
-		 // 	correctSound:
-		 // 	wrongSound:
-		 //},
+		 devilFlanders: {
+		 	question: "What character turns into the Devil?",
+		 	choices: {
+			 		a: "Flanders",
+			 		b: "Lisa",
+			 		c: "Krusty the Clown",
+			 		d: "Barney"
+			 	},
+		 	value: "a",
+		 		correctAnswer: "Flanders",
+		 	gif: "assets/gifs/devilFlanders.gif",
+		 	correctSound:"assets/music/correct/homerDonut.wav",
+		 	wrongSound: "assets/music/wrong/senseofhumor.wav",
+		 },
 	},
 
 	intervalId: "",
@@ -179,14 +179,24 @@ var quiz = {
 		quiz.seconds = 30;
 		var y = quiz.names[quiz.index];
 		quiz.timer();
-		$("#question").html(quiz.trivia[y].question);
-		$("#gif").attr("style", "display: none");
-		$("#time").attr("style", "display: block");
-		$("#choices, .choice").attr("style", "display: block");
-		$("#choice1").html("a. " + quiz.trivia[y].choices.a);
-		$("#choice2").html("b. " + quiz.trivia[y].choices.b);
-		$("#choice3").html("c. " + quiz.trivia[y].choices.c);
-		$("#choice4").html("d. " + quiz.trivia[y].choices.d);
+
+		if (quiz.correctAnswers + quiz.wrongAnswers + quiz.unanswered < quiz.names.length)	{
+			$("#question").html(quiz.trivia[y].question);
+			$("#gif").attr("style", "display: none");
+			$("#time").attr("style", "display: block");
+			$("#choices, .choice").attr("style", "display: block");
+			$("#choice1").html("a. " + quiz.trivia[y].choices.a);
+			$("#choice2").html("b. " + quiz.trivia[y].choices.b);
+			$("#choice3").html("c. " + quiz.trivia[y].choices.c);
+			$("#choice4").html("d. " + quiz.trivia[y].choices.d);	
+		} else {
+			$("#gif").attr("style", "display: none");
+			$("#choices").attr("style", "display: block");
+			$("#question").html("All done, here's how you did!")
+			$("#choices").html("Correct Answers: " + quiz.correctAnswers + "<br> Incorrect Answers: " + quiz.wrongAnswers + "<br> Unanswered: " + quiz.unanswered)
+		};
+
+		
 	},
 
 
@@ -201,7 +211,6 @@ var quiz = {
 		if (s == 0) {
 			quiz.stopTimer();
 			quiz.answerCheck();
-			unanswered++;
 		}
 	},
 
@@ -211,9 +220,6 @@ var quiz = {
 		$("#time").attr("style", "display: none");
 	},
 
-// stopTimer is not working correctly!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
 	answerCheck: function() {
 		//which answer they choose
 		var selected = this.value;
@@ -221,7 +227,17 @@ var quiz = {
 
 			var x = quiz.names[quiz.index];
 		
-			if (selected == quiz.trivia[x].value) {
+			if (selected == ""){
+				quiz.unanswered++;
+				console.log("this is running");
+				$("#question").html("Wrong! The correct answer was &nbsp" + quiz.trivia[x].correctAnswer);
+				$("#audio").attr("src", quiz.trivia[x].wrongSound);
+				$("#gif").attr("style", "display: block");
+				$("#gif").html("<img src="+ quiz.trivia[x].gif +">");
+				$("#choices").attr("style", "display: none");
+				quiz.index++;
+				setTimeout(quiz.questions, 1000 * 5);
+			}	else if (selected == quiz.trivia[x].value) {
 				quiz.correctAnswers++;
 				$("#question").html("Correct!")
 				$("#audio").attr("src", quiz.trivia[x].correctSound);
@@ -229,7 +245,7 @@ var quiz = {
 				$("#gif").html("<img src="+ quiz.trivia[x].gif +">");
 				$("#choices").attr("style", "display: none");
 				quiz.index++;
-				quiz.endGame();
+				//setTimeout(quiz.endGame, 1000 * 5);
 				setTimeout(quiz.questions, 1000 * 5);
 			} else {
 				quiz.wrongAnswers++;
@@ -239,22 +255,24 @@ var quiz = {
 				$("#gif").html("<img src="+ quiz.trivia[x].gif +">");
 				$("#choices").attr("style", "display: none");
 				quiz.index++;
-				quiz.endGame();
+				//setTimeout(quiz.endGame, 1000 * 5);
 				setTimeout(quiz.questions, 1000 * 5);
 			};
 		
 			console.log(quiz.names[quiz.index]);
 	},
 
-	endGame: function() {
+	// endGame: function() {
 
-		if (quiz.correctAnswers + quiz.wrongAnswers + quiz.unanswered === quiz.names.length) {
-			$("#gif").attr("style", "display: none");
-			$("#choices").attr("style", "display: block");
-			$("#question").html("All done, here's how you did!")
-			$("#choices").html("Correct Answers: " + quiz.correctAnswers + "<br> Incorrect Answers: " + quiz.wrongAnswers + "<br> Unanswered: " + quiz.unanswered)
-		}
-	},
+	// 	if (quiz.correctAnswers + quiz.wrongAnswers + quiz.unanswered === quiz.names.length) {
+	// 		$("#gif").attr("style", "display: none");
+	// 		$("#choices").attr("style", "display: block");
+	// 		$("#question").html("All done, here's how you did!")
+	// 		$("#choices").html("Correct Answers: " + quiz.correctAnswers + "<br> Incorrect Answers: " + quiz.wrongAnswers + "<br> Unanswered: " + quiz.unanswered)
+
+	// 	// Need to add play again button to restart game
+	// 	}
+	// },
 
 };
 
