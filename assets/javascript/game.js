@@ -1,14 +1,10 @@
-//make the game an object
+// $(document).ready(function() {
 var quiz = {
 
 	names: ["ralph", "lisa", "homer", "bart", "skinner", "flanders", "marge", "burns", "lurleen", "devilFlanders"],
 
 	trivia: {
-//make each question an object inside of the game with:
-	//question
-	//answer choices
-	//picture
-	//sound for correct/wrong
+
 		 ralph: {
 		 	question: "Who is Cheif Wiggum's son?",
 		 	choices: {
@@ -125,8 +121,8 @@ var quiz = {
 		 	value: "a",
 		 	correctAnswer: "Mr. Burns",
 		 	gif: "assets/gifs/burns.gif",
-		 	correctSound: "assets/music/correct/pishPosh.wav",
-		 	wrongSound: "assets/music/wrong/haHa.wav",
+		 	correctSound: "assets/music/correct/bartAyCaramba.wav",
+		 	wrongSound: "assets/music/wrong/pishPosh.wav",
 		 },
 
 		 lurleen:  {
@@ -141,7 +137,7 @@ var quiz = {
 		 	correctAnswer: "Lurleen",
 		 	gif: "assets/gifs/lurleen.gif",
 		 	correctSound: "assets/music/correct/boring.mp3",
-		 	wrongSound: "assets/music/wrong/bartAyCaramba.wav",
+		 	wrongSound: "assets/music/wrong/haHa.wav",
 		 },
 
 		 devilFlanders: {
@@ -178,9 +174,9 @@ var quiz = {
 	questions: function() {
 		quiz.seconds = 30;
 		var y = quiz.names[quiz.index];
-		quiz.timer();
 
 		if (quiz.correctAnswers + quiz.wrongAnswers + quiz.unanswered < quiz.names.length)	{
+			quiz.timer();
 			$("#question").html(quiz.trivia[y].question);
 			$("#gif").attr("style", "display: none");
 			$("#time").attr("style", "display: block");
@@ -190,19 +186,19 @@ var quiz = {
 			$("#choice3").html("c. " + quiz.trivia[y].choices.c);
 			$("#choice4").html("d. " + quiz.trivia[y].choices.d);	
 		} else {
+			quiz.stopTimer();
 			$("#gif").attr("style", "display: none");
 			$("#choices").attr("style", "display: block");
 			$("#question").html("All done, here's how you did!")
 			$("#choices").html("Correct Answers: " + quiz.correctAnswers + "<br> Incorrect Answers: " + quiz.wrongAnswers + "<br> Unanswered: " + quiz.unanswered)
-		};
-
-		
+			quiz.button();
+		};		
 	},
-
 
 	timer: function() {
 		timerRunning = true;
 		var s = quiz.seconds;
+		var z = quiz.names[quiz.index];
 		quiz.seconds--;
 
 		$("#time").html("Time Remaining: " + s + " Seconds");
@@ -210,7 +206,16 @@ var quiz = {
 
 		if (s == 0) {
 			quiz.stopTimer();
-			quiz.answerCheck();
+			//quiz.answerCheck();
+			quiz.unanswered++;
+				console.log("this is running");
+				$("#question").html("Wrong! The correct answer was &nbsp" + quiz.trivia[z].correctAnswer);
+				$("#audio").attr("src", quiz.trivia[z].wrongSound);
+				$("#gif").attr("style", "display: block");
+				$("#gif").html("<img src="+ quiz.trivia[z].gif +">");
+				$("#choices").attr("style", "display: none");
+				quiz.index++;
+				setTimeout(quiz.questions, 1000 * 4);
 		}
 	},
 
@@ -227,17 +232,7 @@ var quiz = {
 
 			var x = quiz.names[quiz.index];
 		
-			if (selected == ""){
-				quiz.unanswered++;
-				console.log("this is running");
-				$("#question").html("Wrong! The correct answer was &nbsp" + quiz.trivia[x].correctAnswer);
-				$("#audio").attr("src", quiz.trivia[x].wrongSound);
-				$("#gif").attr("style", "display: block");
-				$("#gif").html("<img src="+ quiz.trivia[x].gif +">");
-				$("#choices").attr("style", "display: none");
-				quiz.index++;
-				setTimeout(quiz.questions, 1000 * 5);
-			}	else if (selected == quiz.trivia[x].value) {
+			 if (selected == quiz.trivia[x].value) {
 				quiz.correctAnswers++;
 				$("#question").html("Correct!")
 				$("#audio").attr("src", quiz.trivia[x].correctSound);
@@ -245,8 +240,8 @@ var quiz = {
 				$("#gif").html("<img src="+ quiz.trivia[x].gif +">");
 				$("#choices").attr("style", "display: none");
 				quiz.index++;
-				//setTimeout(quiz.endGame, 1000 * 5);
-				setTimeout(quiz.questions, 1000 * 5);
+				setTimeout(quiz.questions, 1000 * 4);
+				console.log("plus one for a win");
 			} else {
 				quiz.wrongAnswers++;
 				$("#question").html("Wrong! The correct answer was &nbsp" + quiz.trivia[x].correctAnswer);
@@ -255,21 +250,38 @@ var quiz = {
 				$("#gif").html("<img src="+ quiz.trivia[x].gif +">");
 				$("#choices").attr("style", "display: none");
 				quiz.index++;
-				//setTimeout(quiz.endGame, 1000 * 5);
-				setTimeout(quiz.questions, 1000 * 5);
+				setTimeout(quiz.questions, 1000 * 4);
+				console.log("lost");
 			};
-		
 			console.log(quiz.names[quiz.index]);
 	},
 
-	// endGame: function() {
+//this is not working but is being called
+	button: function() {
+				//make the button
+		//write Play Again? on it
+		//on click run this function
+		//resets the game
+		var button = $("<button>");
+		button.text("Play Again?");
+		button.attr('id', 'restart');
+		$("#question").append(button);
+		console.log("Where's the button?")
 
-	// 	if (quiz.correctAnswers + quiz.wrongAnswers + quiz.unanswered === quiz.names.length) {
-	// 		$("#gif").attr("style", "display: none");
-	// 		$("#choices").attr("style", "display: block");
-	// 		$("#question").html("All done, here's how you did!")
-	// 		$("#choices").html("Correct Answers: " + quiz.correctAnswers + "<br> Incorrect Answers: " + quiz.wrongAnswers + "<br> Unanswered: " + quiz.unanswered)
+	},
 
+//this is not being called unless restart button is clicked
+	playAgain: function() {
+		quiz.correctAnswers = 0;
+		quiz.wrongAnswers = 0;
+		quiz.unanswered = 0;
+		quiz.seconds = 30;
+		quiz.index = 0;
+
+		quiz.start();
+
+		console.log("Yeah I wanna Play!!");
+	},
 	// 	// Need to add play again button to restart game
 	// 	}
 	// },
@@ -299,3 +311,5 @@ var quiz = {
 $("#startButton").click(quiz.start);
 
 $(".choice").click(quiz.answerCheck);
+
+$("#restart").click(quiz.playAgain);
