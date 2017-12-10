@@ -166,21 +166,20 @@ var quiz = {
 
 	start:  function() {
 		$("#audio").attr("src", "assets/music/bartHell.wav");
-		$("#startButton").attr("style", "display: none");
+		$("#startButton, #results").attr("style", "display: none");
 		$("#time, #question, #choices, .choices").attr("style", "display: block");
 		quiz.questions();
 	},
 
 	questions: function() {
-		quiz.seconds = 30;
+		quiz.seconds = 20;
 		var y = quiz.names[quiz.index];
 
 		if (quiz.correctAnswers + quiz.wrongAnswers + quiz.unanswered < quiz.names.length)	{
 			quiz.timer();
 			$("#question").html(quiz.trivia[y].question);
 			$("#gif").attr("style", "display: none");
-			$("#time").attr("style", "display: block");
-			$("#choices, .choice").attr("style", "display: block");
+			$("#choices, .choice, #time").attr("style", "display: block");
 			$("#choice1").html("a. " + quiz.trivia[y].choices.a);
 			$("#choice2").html("b. " + quiz.trivia[y].choices.b);
 			$("#choice3").html("c. " + quiz.trivia[y].choices.c);
@@ -188,9 +187,9 @@ var quiz = {
 		} else {
 			quiz.stopTimer();
 			$("#gif").attr("style", "display: none");
-			$("#choices").attr("style", "display: block");
+			$("#results").attr("style", "display: block");
 			$("#question").html("All done, here's how you did!")
-			$("#choices").html("Correct Answers: " + quiz.correctAnswers + "<br> Incorrect Answers: " + quiz.wrongAnswers + "<br> Unanswered: " + quiz.unanswered)
+			$("#results").html("Correct Answers: " + quiz.correctAnswers + "<br> Incorrect Answers: " + quiz.wrongAnswers + "<br> Unanswered: " + quiz.unanswered)
 			quiz.button();
 		};		
 	},
@@ -206,13 +205,12 @@ var quiz = {
 
 		if (s == 0) {
 			quiz.stopTimer();
-			//quiz.answerCheck();
 			quiz.unanswered++;
 				console.log("this is running");
-				$("#question").html("Wrong! The correct answer was &nbsp" + quiz.trivia[z].correctAnswer);
+				$("#question").html("Wrong!");
 				$("#audio").attr("src", quiz.trivia[z].wrongSound);
 				$("#gif").attr("style", "display: block");
-				$("#gif").html("<img src="+ quiz.trivia[z].gif +">");
+				$("#gif").html("The correct answer was &nbsp" + quiz.trivia[z].correctAnswer +"<br><img src="+ quiz.trivia[z].gif +">");
 				$("#choices").attr("style", "display: none");
 				quiz.index++;
 				setTimeout(quiz.questions, 1000 * 4);
@@ -241,36 +239,23 @@ var quiz = {
 				$("#choices").attr("style", "display: none");
 				quiz.index++;
 				setTimeout(quiz.questions, 1000 * 4);
-				console.log("plus one for a win");
 			} else {
 				quiz.wrongAnswers++;
-				$("#question").html("Wrong! The correct answer was &nbsp" + quiz.trivia[x].correctAnswer);
+				$("#question").html("Wrong!");
 				$("#audio").attr("src", quiz.trivia[x].wrongSound);
 				$("#gif").attr("style", "display: block");
-				$("#gif").html("<img src="+ quiz.trivia[x].gif +">");
+				$("#gif").html(" The correct answer was &nbsp" + quiz.trivia[x].correctAnswer + "<br><img src="+ quiz.trivia[x].gif +">");
 				$("#choices").attr("style", "display: none");
 				quiz.index++;
 				setTimeout(quiz.questions, 1000 * 4);
-				console.log("lost");
 			};
-			console.log(quiz.names[quiz.index]);
 	},
 
-//this is not working but is being called
 	button: function() {
-				//make the button
-		//write Play Again? on it
-		//on click run this function
-		//resets the game
-		var button = $("<button>");
-		button.text("Play Again?");
-		button.attr('id', 'restart');
-		$("#question").append(button);
-		console.log("Where's the button?")
-
+		$("#restart").attr("style", "display: block");
+		console.log("Where's the button?");
 	},
 
-//this is not being called unless restart button is clicked
 	playAgain: function() {
 		quiz.correctAnswers = 0;
 		quiz.wrongAnswers = 0;
@@ -279,33 +264,11 @@ var quiz = {
 		quiz.index = 0;
 
 		quiz.start();
-
+		$("#restart").attr("style", "display: none");
 		console.log("Yeah I wanna Play!!");
 	},
-	// 	// Need to add play again button to restart game
-	// 	}
-	// },
 
 };
-
-
-//timer counting down, restarts with each question
-
-
-
-//on load, start button
-//press start for first question
-//questions are buttons with hover
-//click an answer question replaced with if correct or incorrect, answer choices replaced with a gif (if the answer was wrong displays "The Correct Answer was: XXX" over the gif)
-//setTimeout function to display revealed answer
-
-//automatically goes to the next question
-
-//when the timer runs out of time, automatically reveals answer page
-
-//when game is over, no more timer shows number of correct answers, number of wrong answers, number of unanswered questions and a start over button 
-//click on the start game over button (doesn't reload page, resets game) 
-
 
 //++++++++++Start Game++++++++++++++++++
 $("#startButton").click(quiz.start);

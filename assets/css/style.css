@@ -31,7 +31,7 @@ img {
     margin-left: auto;
 }
 
- #startButton {
+#startButton, #restart {
  	left: 480px;
     position: relative;
     bottom: 285px;
@@ -40,46 +40,57 @@ img {
     border: 1px solid black;
  }
 
- #startButton:hover {
+#startButton:hover, #restart:hover {
 	background-color: #ead520;
 }
-
-#time, #question, #answers {
-	line-height: 55px;
+#restart, #results {
+	display: none;
+	bottom: 165px;
+}
+#time, #question, #results {
+	line-height: 45px;
     font-size: 35px;
    	color: black;
    	display: none;
     margin-right: auto;
     margin-left: auto;
 }
+#results {
+    font-size: 30px;
+}
 
 #question {
 	letter-spacing: 2px;
+	margin-bottom: 20px;
 }
 
 #time {
 	margin-top: 38px;
+	margin-bottom: 15px;
 	color: gold;
+} 
+
+#gif {
+	font-size: 25px;
 }
 
 .choice, #choices{
  	display: none;
 	color: black;
-	font-size: 20px;
-	width: 300px;
+	font-size: 30px;
+	width: 400px;
 	margin-right: auto;
 	margin-left: auto;
 	padding: 5px;
 }
 
-#choices {
+/*#choices {
 	margin-top: 20px;
-	width: 300px;
 }
-
+*/
 .choice:hover {
 	border: 1px solid black;
-	font-size: 25px;
+	font-size: 35px;
 }
 
 #mainContent {
