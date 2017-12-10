@@ -89,7 +89,7 @@ var quiz = {
 			 		d: "The Leftorium"
 			 	},
 		 	value: "d",
-		 		correctAnswer: "The Leftorium",
+		 	correctAnswer: "The Leftorium",
 		 	gif: "assets/gifs/flanders.gif",
 		 	correctSound: "assets/music/correct/nedHotDiggity.wav",
 		 	wrongSound: "assets/music/wrong/bartMustYou.wav",
@@ -149,7 +149,7 @@ var quiz = {
 			 		d: "Barney"
 			 	},
 		 	value: "a",
-		 		correctAnswer: "Flanders",
+		 	correctAnswer: "Flanders",
 		 	gif: "assets/gifs/devilFlanders.gif",
 		 	correctSound:"assets/music/correct/homerDonut.wav",
 		 	wrongSound: "assets/music/wrong/senseofhumor.wav",
@@ -173,17 +173,19 @@ var quiz = {
 
 	questions: function() {
 		quiz.seconds = 20;
-		var y = quiz.names[quiz.index];
+		//Which Character Object
+		//z is global
+		z = quiz.names[quiz.index];
 
 		if (quiz.correctAnswers + quiz.wrongAnswers + quiz.unanswered < quiz.names.length)	{
 			quiz.timer();
-			$("#question").html(quiz.trivia[y].question);
+			$("#question").html(quiz.trivia[z].question);
 			$("#gif").attr("style", "display: none");
 			$("#choices, .choice, #time").attr("style", "display: block");
-			$("#choice1").html("a. " + quiz.trivia[y].choices.a);
-			$("#choice2").html("b. " + quiz.trivia[y].choices.b);
-			$("#choice3").html("c. " + quiz.trivia[y].choices.c);
-			$("#choice4").html("d. " + quiz.trivia[y].choices.d);	
+			$("#choice1").html("a. " + quiz.trivia[z].choices.a);
+			$("#choice2").html("b. " + quiz.trivia[z].choices.b);
+			$("#choice3").html("c. " + quiz.trivia[z].choices.c);
+			$("#choice4").html("d. " + quiz.trivia[z].choices.d);	
 		} else {
 			quiz.stopTimer();
 			$("#gif").attr("style", "display: none");
@@ -194,10 +196,19 @@ var quiz = {
 		};		
 	},
 
+	wrong: function() {
+		$("#question").html("Wrong!");
+		$("#audio").attr("src", quiz.trivia[z].wrongSound);
+		$("#gif").attr("style", "display: block");
+		$("#gif").html("The correct answer was &nbsp" + quiz.trivia[z].correctAnswer +"<br><img src="+ quiz.trivia[z].gif +">");
+		$("#choices").attr("style", "display: none");
+		quiz.index++;
+		setTimeout(quiz.questions, 1000 * 4);
+	},
+
 	timer: function() {
 		timerRunning = true;
 		var s = quiz.seconds;
-		var z = quiz.names[quiz.index];
 		quiz.seconds--;
 
 		$("#time").html("Time Remaining: " + s + " Seconds");
@@ -205,15 +216,8 @@ var quiz = {
 
 		if (s == 0) {
 			quiz.stopTimer();
+			quiz.wrong();
 			quiz.unanswered++;
-				console.log("this is running");
-				$("#question").html("Wrong!");
-				$("#audio").attr("src", quiz.trivia[z].wrongSound);
-				$("#gif").attr("style", "display: block");
-				$("#gif").html("The correct answer was &nbsp" + quiz.trivia[z].correctAnswer +"<br><img src="+ quiz.trivia[z].gif +">");
-				$("#choices").attr("style", "display: none");
-				quiz.index++;
-				setTimeout(quiz.questions, 1000 * 4);
 		}
 	},
 
@@ -228,32 +232,23 @@ var quiz = {
 		var selected = this.value;
 		quiz.stopTimer();
 
-			var x = quiz.names[quiz.index];
-		
-			 if (selected == quiz.trivia[x].value) {
+			 if (selected == quiz.trivia[z].value) {
 				quiz.correctAnswers++;
 				$("#question").html("Correct!")
-				$("#audio").attr("src", quiz.trivia[x].correctSound);
+				$("#audio").attr("src", quiz.trivia[z].correctSound);
+				$("#choices").attr("style", "display: none");				
+				$("#gif").html("<img src="+ quiz.trivia[z].gif +">");
 				$("#gif").attr("style", "display: block");
-				$("#gif").html("<img src="+ quiz.trivia[x].gif +">");
-				$("#choices").attr("style", "display: none");
 				quiz.index++;
 				setTimeout(quiz.questions, 1000 * 4);
 			} else {
 				quiz.wrongAnswers++;
-				$("#question").html("Wrong!");
-				$("#audio").attr("src", quiz.trivia[x].wrongSound);
-				$("#gif").attr("style", "display: block");
-				$("#gif").html(" The correct answer was &nbsp" + quiz.trivia[x].correctAnswer + "<br><img src="+ quiz.trivia[x].gif +">");
-				$("#choices").attr("style", "display: none");
-				quiz.index++;
-				setTimeout(quiz.questions, 1000 * 4);
+				quiz.wrong();
 			};
 	},
 
 	button: function() {
 		$("#restart").attr("style", "display: block");
-		console.log("Where's the button?");
 	},
 
 	playAgain: function() {
@@ -265,7 +260,6 @@ var quiz = {
 
 		quiz.start();
 		$("#restart").attr("style", "display: none");
-		console.log("Yeah I wanna Play!!");
 	},
 
 };
