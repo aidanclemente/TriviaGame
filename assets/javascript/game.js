@@ -166,8 +166,9 @@ var quiz = {
 
 	start:  function() {
 		$("#audio").attr("src", "assets/music/bartHell.wav");
-		$("#startButton, #results").attr("style", "display: none");
 		$("#time, #question, #choices, .choices").attr("style", "display: block");
+		$("#startButton, #results").attr("style", "display: none");
+		
 		quiz.questions();
 	},
 
@@ -180,16 +181,17 @@ var quiz = {
 		if (quiz.correctAnswers + quiz.wrongAnswers + quiz.unanswered < quiz.names.length)	{
 			quiz.timer();
 			$("#question").html(quiz.trivia[z].question);
-			$("#gif").attr("style", "display: none");
 			$("#choices, .choice, #time").attr("style", "display: block");
+			$("#gif").attr("style", "display: none");
 			$("#choice1").html("a. " + quiz.trivia[z].choices.a);
 			$("#choice2").html("b. " + quiz.trivia[z].choices.b);
 			$("#choice3").html("c. " + quiz.trivia[z].choices.c);
 			$("#choice4").html("d. " + quiz.trivia[z].choices.d);	
 		} else {
 			quiz.stopTimer();
-			$("#gif").attr("style", "display: none");
+			
 			$("#results").attr("style", "display: block");
+			$("#gif").attr("style", "display: none");
 			$("#question").html("All done, here's how you did!")
 			$("#results").html("Correct Answers: " + quiz.correctAnswers + "<br> Incorrect Answers: " + quiz.wrongAnswers + "<br> Unanswered: " + quiz.unanswered)
 			quiz.button();
@@ -199,9 +201,9 @@ var quiz = {
 	wrong: function() {
 		$("#question").html("Wrong!");
 		$("#audio").attr("src", quiz.trivia[z].wrongSound);
+		$("#choices").attr("style", "display: none");
 		$("#gif").attr("style", "display: block");
 		$("#gif").html("The correct answer was &nbsp" + quiz.trivia[z].correctAnswer +"<br><img src="+ quiz.trivia[z].gif +">");
-		$("#choices").attr("style", "display: none");
 		quiz.index++;
 		setTimeout(quiz.questions, 1000 * 4);
 	},
@@ -236,9 +238,9 @@ var quiz = {
 				quiz.correctAnswers++;
 				$("#question").html("Correct!")
 				$("#audio").attr("src", quiz.trivia[z].correctSound);
+				$("#gif").attr("style", "display: block");
 				$("#choices").attr("style", "display: none");				
 				$("#gif").html("<img src="+ quiz.trivia[z].gif +">");
-				$("#gif").attr("style", "display: block");
 				quiz.index++;
 				setTimeout(quiz.questions, 1000 * 4);
 			} else {
