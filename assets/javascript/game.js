@@ -193,7 +193,7 @@ var quiz = {
 			$("#results").attr("style", "display: block");
 			$("#gif").attr("style", "display: none");
 			$("#question").html("All done, here's how you did!")
-			$("#results").html("Correct Answers: " + quiz.correctAnswers + "<br> Incorrect Answers: " + quiz.wrongAnswers + "<br> Unanswered: " + quiz.unanswered)
+			$("#results").html("Correct Answers: &nbsp<strong>" + quiz.correctAnswers + "</strong><br> Incorrect Answers:   &nbsp<strong>" + quiz.wrongAnswers + " </strong><br> Unanswered:   &nbsp<strong>" + quiz.unanswered + "</strong>")
 			quiz.button();
 		};		
 	},
@@ -203,7 +203,7 @@ var quiz = {
 		$("#audio").attr("src", quiz.trivia[z].wrongSound);
 		$("#choices").attr("style", "display: none");
 		$("#gif").attr("style", "display: block");
-		$("#gif").html("The correct answer was &nbsp" + quiz.trivia[z].correctAnswer +"<br><img src="+ quiz.trivia[z].gif +">");
+		$("#gif").html("The correct answer was &nbsp <strong>" + quiz.trivia[z].correctAnswer +"</strong><br><img src="+ quiz.trivia[z].gif +">");
 		quiz.index++;
 		setTimeout(quiz.questions, 1000 * 4);
 	},
