@@ -126,11 +126,18 @@ img {
 		font-size: 30px;
 	}
 
-	html.can-touch .choice:hover {
+/*	html.can-touch .choice:hover {
 	color: black;
 	text-shadow: none;
 	border: none;
 	font-size: 25px;
-	}
+	}*/
 
+}
+
+@media (hover:none) {
+    color: black;
+	text-shadow: none;
+	border: none;
+	font-size: 25px;
 }
