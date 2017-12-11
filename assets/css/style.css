@@ -123,6 +123,10 @@ img {
 	}
 
 	.choice:hover {
-		font-size: 30px;
- 	}
+	color: black;
+	text-shadow: none;
+	border: none;
+	font-size: 30px;
+	}
+
 }
