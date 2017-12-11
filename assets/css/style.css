@@ -122,11 +122,15 @@ img {
 		margin-bottom: 0;
 	}
 
-	.choice:hover {
+	.choice:hover{
+		font-size: 30px;
+	}
+
+	html.can-touch .choice:hover {
 	color: black;
 	text-shadow: none;
 	border: none;
-	font-size: 30px;
+	font-size: 25px;
 	}
 
 }
