@@ -135,7 +135,7 @@ img {
 
 }
 
-@media (hover:none) {
+@media (hover:on-demand) {
     color: black;
 	text-shadow: none;
 	border: none;
