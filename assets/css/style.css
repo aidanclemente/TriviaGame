@@ -12,14 +12,15 @@ h1 {
 	font-size: 5.5rem;
 	color: gold;
 }
- h1, #time, #question, #answers {
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
- }
 
- button {
- 	background: none;
- 	border: none;
- }
+h1, #time, #question, #answers {
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+button {
+	background: none;
+	border: none;
+}
 
 button:focus {
   outline: none;
@@ -32,9 +33,7 @@ img {
 }
 
 #startButton, #restart {
- 	left: 480px;
-    position: relative;
-    bottom: 285px;
+    margin-top: 80px;
     padding: 15px;
     background-color: gold;
     border: 1px solid black;
@@ -43,11 +42,8 @@ img {
 #startButton:hover, #restart:hover {
 	background-color: #ead520;
 }
-#restart, #results {
-	display: none;
-	bottom: 165px;
-}
-#time, #question, #results {
+
+#time, #question, #results, #restart {
 	line-height: 45px;
     font-size: 35px;
    	color: black;
@@ -55,18 +51,24 @@ img {
     margin-right: auto;
     margin-left: auto;
 }
+
+#restart, #results {
+	font-size:30px;
+}
+
 #results {
-    font-size: 30px;
+    margin-top: 40px;
 }
 
 #question {
+	width: 70%;
 	letter-spacing: 2px;
+	margin-top: 15px;
 	margin-bottom: 20px;
 }
 
 #time {
 	margin-top: 38px;
-	margin-bottom: 15px;
 	color: gold;
 } 
 
@@ -84,18 +86,43 @@ img {
 	padding: 5px;
 }
 
-/*#choices {
-	margin-top: 20px;
-}
-*/
 .choice:hover {
+	color: gold;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 	border: 1px solid black;
 	font-size: 35px;
 }
 
 #mainContent {
-	/*background: #fff;*/
 	position: relative;
     top: 70px;
     height: 583px;
+}
+
+@media screen and (max-width: 500px) {
+	img {
+		width: 90%;
+	}
+	
+	h1 {
+		font-size: 60px; 	
+	}
+
+	#restart {
+		margin-top: 34px;
+	}
+
+	#time, #results {
+		font-size: 25px;
+	}
+	
+	.choice, #choices, #question {
+		font-size: 25px;
+		width: 90%;
+		margin-bottom: 0;
+	}
+
+	.choice:hover {
+		font-size: 30px;
+ 	}
 }
