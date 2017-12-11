@@ -136,8 +136,10 @@ img {
 }
 
 @media (hover:on-demand) {
-    color: black;
+    .choice:hover {
+	color: black;
 	text-shadow: none;
 	border: none;
 	font-size: 25px;
+	}
 }
